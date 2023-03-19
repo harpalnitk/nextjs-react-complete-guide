@@ -9,6 +9,7 @@ const HomePage = (props) => {
             <ul>
                <li>
                   <Link href="/blog">Blog</Link>
+                  <Link href="/routing-project">Routing Project</Link>
                </li>
             </ul>
          </div>
