@@ -18,7 +18,7 @@ const EventItem = (props) => {
     });
 
     const formattedAddress = location.replace(', ','\n'); // comma replaced with line break
-    const exploreLink = `routing-project/events/${id}`;
+    const exploreLink = `/routing-project/events/${id}`;
     
     return (
          <li className={styles.item}>

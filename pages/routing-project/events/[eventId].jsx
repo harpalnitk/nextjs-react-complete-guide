@@ -1,6 +1,7 @@
 import EventContent from "@/components/routing-project/event-detail/event-content";
 import EventLogistics from "@/components/routing-project/event-detail/event-logistics";
 import EventSummary from "@/components/routing-project/event-detail/event-summary";
+import ErrorAlert from "@/components/ui/error-alert";
 import { getEventById } from "@/lib/dummy-data";
 import { useRouter } from "next/router";
 
@@ -11,10 +12,14 @@ const EventDetailPage = (props) => {
    const eventId  = router.query.eventId;
    const event = getEventById(eventId);
    if(!event){
-      return <p>No event Found!</p>
+      return (<ErrorAlert>
+         <p>No event Found!</p>
+         </ErrorAlert>)
+
 
    }
-     return (
+     
+return (
 <>
 <EventSummary title={event.title}></EventSummary>
 <EventLogistics 
