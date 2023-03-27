@@ -20,7 +20,8 @@ const HomePage = (props) => {
           return{
             props:{
               events: featuredEvents
-            }
+            },
+            revalidate:1800 // every half hour
           }
         }
 
