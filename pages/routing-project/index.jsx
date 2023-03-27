@@ -1,17 +1,27 @@
-import { getFeaturedEvents } from "@/lib/dummy-data";
+//import { getFeaturedEvents } from "@/lib/dummy-data";
 import EventList from "@/components/routing-project/event-list";
+import { getFeaturedEvents } from "@/helpers/routing-project/api-utils";
 
 const HomePage = (props) => {
 
-   const featuredEvents = getFeaturedEvents();
+  // const featuredEvents = getFeaturedEvents();
      return (
      
          <div>
-           <EventList items={featuredEvents}/>
+           <EventList items={props.events}/>
          </div>
     
 
      );
+        }
+
+        export async function getStaticProps(){
+          const featuredEvents = await getFeaturedEvents();
+          return{
+            props:{
+              events: featuredEvents
+            }
+          }
         }
 
 
