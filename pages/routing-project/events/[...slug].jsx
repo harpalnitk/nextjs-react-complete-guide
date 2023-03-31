@@ -24,27 +24,33 @@ const FilteredEventsPage = () => {
    const filteredData = router.query.slug;
    console.log('filteredData',filteredData);
 
-   const {data, error} = useSWR('https://fireship-blog-react-firebase-default-rtdb.firebaseio.com/events.json')
-   console.log('data', data)
+
+   const getDataFromServer = async ()=>{
+      const response = await fetch('https://fireship-blog-react-firebase-default-rtdb.firebaseio.com/events.json');
+      const data = await response.json();
+      console.log('data',data);
+      if(data){
+         const events = [];
+   
+         for (const key in data){
+            events.push({
+                id:key,
+                ...data[key]
+            })
+        
+         }
+         console.log('events',events)
+         setLoadedEvents(events);
+        }
+   }
+   
+
 
   
   
    useEffect(()=>{
-   console.log('data in effect', data)
-   if(data){
-      const events = [];
-
-      for (const key in data){
-         events.push({
-             id:key,
-             ...data[key]
-         })
-     
-      }
-      setLoadedEvents(events);
-     }
-   
-  },[data]);
+   getDataFromServer();
+  },[]);
 
 let pageHeadData = <Head>
       <title>Filtered Events</title>
@@ -55,6 +61,7 @@ let pageHeadData = <Head>
 
 
   if(!loadedEvents){
+
    // center is global css class 
    return <>
    {pageHeadData}
@@ -88,8 +95,7 @@ console.log(numYear,numMonth);
     numYear > 2030 ||
     numYear < 2021 ||
     numMonth < 1 ||
-    numMonth > 12 ||
-    error){
+    numMonth > 12 ){
  return <>
    {pageHeadData}
  <ErrorAlert>
