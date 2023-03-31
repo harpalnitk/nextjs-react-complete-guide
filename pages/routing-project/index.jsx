@@ -1,5 +1,6 @@
 //import { getFeaturedEvents } from "@/lib/dummy-data";
 import EventList from "@/components/routing-project/event-list";
+import NewsletterRegistration from "@/components/routing-project/input/newsletter-registration";
 import { getFeaturedEvents } from "@/helpers/routing-project/api-utils";
 // meta tags
 import Head from 'next/head';
@@ -13,6 +14,7 @@ const HomePage = (props) => {
             <title>NextJs Events</title>
             <meta name='description' content="Find a lot of great events that allow you to evolve..."/>
           </Head>
+          <NewsletterRegistration/>
            <EventList items={props.events}/>
          </div>
     

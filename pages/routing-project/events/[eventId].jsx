@@ -1,6 +1,7 @@
 import EventContent from '@/components/routing-project/event-detail/event-content';
 import EventLogistics from '@/components/routing-project/event-detail/event-logistics';
 import EventSummary from '@/components/routing-project/event-detail/event-summary';
+import Comments from '@/components/routing-project/input/comments';
 import ErrorAlert from '@/components/ui/error-alert';
 //import { getEventById } from '@/lib/dummy-data';
 // import { useRouter } from 'next/router';
@@ -31,6 +32,7 @@ const EventDetailPage = (props) => {
       <EventContent>
         <p>{event.description}</p>
       </EventContent>
+      <Comments eventId={event.id}/>
     </>
   );
 };

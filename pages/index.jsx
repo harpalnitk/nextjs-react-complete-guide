@@ -10,6 +10,7 @@ const HomePage = (props) => {
                <li>
                   <Link href="/blog">Blog</Link>
                   <Link href="/routing-project">Routing Project</Link>
+                  <Link href="/server-project">Server Project</Link>
                </li>
             </ul>
          </div>

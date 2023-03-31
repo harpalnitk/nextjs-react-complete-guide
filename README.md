@@ -246,3 +246,11 @@ all pages of the app
 # _document.jsx file
 
 allows to customize entire html document
+
+
+### NEXTJS SERVER
+inside pages folder
+create api folder and then files for different api paths
+
+# data folder 
+out own folder for storing static data files
