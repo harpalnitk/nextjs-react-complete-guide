@@ -228,3 +228,21 @@ pre-rendering of page happens without the data
 
 # custom Hook
 SWR hook by vercel
+
+> npm i SWR
+
+
+### META DATA ADDING IN NEXTJS
+
+import Head from 'next/head';
+
+all head elements across all pages will be merged
+e.g. head in layout and main component will be merged
+if there is conflict last value will be atke e.g. conflict in title
+
+Head in _app.js will be rendered across
+all pages of the app
+
+# _document.jsx file
+
+allows to customize entire html document
