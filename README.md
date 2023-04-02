@@ -254,3 +254,18 @@ create api folder and then files for different api paths
 
 # data folder 
 out own folder for storing static data files
+
+### To connect app with mongodb
+mongodb cloud atlas
+username: email
+pwd: Nn+1n+1
+
+>npm i mongodb
+
+mongodb code should be used in api routes only
+so that it doesn't go to client
+
+in the mongodb cloud atlas
+1. in database access create new user
+2. in network access enter current IP address
+for white listed IPs
