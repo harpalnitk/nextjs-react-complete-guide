@@ -269,3 +269,5 @@ in the mongodb cloud atlas
 1. in database access create new user
 2. in network access enter current IP address
 for white listed IPs
+
+### React context in nextjs app

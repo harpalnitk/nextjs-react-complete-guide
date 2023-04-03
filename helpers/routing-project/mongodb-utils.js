@@ -1,7 +1,7 @@
 import {MongoClient} from 'mongodb';
 export async function connectDatabase(){
     const client = await MongoClient.connect(
-        `mongodb+srv://nextjs-react-user:manu909@cluster0.cazlo.mongodb.net/?retryWrites=true&w=majority`
+        `mongodb+srv://nextjs-react-user:manu9090@cluster0.cazlo.mongodb.net/?retryWrites=true&w=majority`
         );
         return client;
 }

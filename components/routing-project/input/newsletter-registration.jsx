@@ -1,8 +1,12 @@
 import classes from './newsletter-registration.module.css';
-import { useRef } from 'react';
+import { useRef,useContext } from 'react';
+import NotificationContext from '@/store/notification-context';
 
 function NewsletterRegistration() {
   const emailInputRef = useRef();
+  const notificationCtx = useContext(NotificationContext);
+
+
   function registrationHandler(event) {
     event.preventDefault();
 
@@ -11,6 +15,14 @@ function NewsletterRegistration() {
     // send valid data to API
     const eneteredEmail = emailInputRef.current.value;
 
+    notificationCtx.showNotification({
+      title: 'Signing Up...',
+      message:'Registering for newsletter',
+      status: 'pending'
+    });
+
+
+   
     fetch('/api/routing-project/newsletter',{
       method:'POST',
       body: JSON.stringify({email:eneteredEmail}),
@@ -18,8 +30,36 @@ function NewsletterRegistration() {
         'Content-Type':'application/json'
       }
     })
-    .then(res=> res.json())
-    .then(data=> console.log(data))
+    .then(res=> {
+    if(res.ok){
+      return res.json();
+    }
+     //!  in case of fetch API , 400 or 500 status code
+    //! does not cause this promise to show error; but we want that
+    
+    //nested promise used here and returned
+    return res.json().then(data => {
+      throw new Error(data.message || 'Something went wrong!');
+    })
+     
+    
+    })
+    .then(data=> {
+      console.log(data);
+      notificationCtx.showNotification({
+        title: 'Success...',
+        message:'Successfully registered for newsletter',
+        status: 'success'
+      });
+    }).catch(
+      err=>{
+        notificationCtx.showNotification({
+          title: 'Error...',
+          message:err.message || 'Something went wrong!',
+          status: 'error'
+        });
+      }
+    )
   }
 
   return (
